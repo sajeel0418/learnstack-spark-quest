@@ -4,13 +4,15 @@ import { QuestionCard } from "@/components/QuestionCard";
 import { AIAssistant } from "@/components/AIAssistant";
 import { FileUploader } from "@/components/FileUploader";
 import { 
-  Button,
+  Button
+} from "@/components/ui/button";
+import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/";
+} from "@/components/ui/card";
 import {
   Tabs,
   TabsContent,
@@ -113,7 +115,8 @@ const recentQuestions = [
     votes: 3,
     answers: 0,
     tags: ["mathematics", "calculus", "functions"],
-    createdAt: "15 minutes ago"
+    createdAt: "15 minutes ago",
+    isAnswered: false
   },
   {
     id: "rq2",
@@ -126,7 +129,8 @@ const recentQuestions = [
     votes: 5,
     answers: 1,
     tags: ["biology", "molecular-biology", "genetics"],
-    createdAt: "45 minutes ago"
+    createdAt: "45 minutes ago",
+    isAnswered: false
   },
   {
     id: "rq3",
@@ -139,9 +143,24 @@ const recentQuestions = [
     votes: 7,
     answers: 2,
     tags: ["chemistry", "organic-chemistry", "molecular-structure"],
-    createdAt: "1 hour ago"
+    createdAt: "1 hour ago",
+    isAnswered: false
   }
 ];
+
+// Update questionData to ensure all items have the isAnswered property
+for (const question of questionData) {
+  if (question.isAnswered === undefined) {
+    question.isAnswered = false;
+  }
+}
+
+// Update recentQuestions to ensure all items have the isAnswered property
+for (const question of recentQuestions) {
+  if (question.isAnswered === undefined) {
+    question.isAnswered = false;
+  }
+}
 
 const Index = () => {
   return (
